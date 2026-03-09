@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-teal-50: 186 97% 95%;
+    --color-teal-100: 186 97% 88%;
+    --color-teal-200: 186 97% 75%;
+    --color-teal-300: 186 97% 60%;
+    --color-teal-400: 186 97% 47%;
+    --color-teal-500: 186 97% 35%;
+    --color-teal-600: 186 97% 27%;
+    --color-teal-700: 186 97% 20%;
+    --color-teal-800: 186 97% 13%;
+    --color-teal-900: 186 97% 7%;
+
+    --color-champagne-50: 50 62% 97%;
+    --color-champagne-100: 50 62% 92%;
+    --color-champagne-200: 50 62% 84%;
+    --color-champagne-300: 50 62% 74%;
+    --color-champagne-400: 50 62% 62%;
+    --color-champagne-500: 50 62% 50%;
+    --color-champagne-600: 50 62% 38%;
+    --color-champagne-700: 50 62% 27%;
+    --color-champagne-800: 50 62% 17%;
+    --color-champagne-900: 50 62% 9%;
+
+    --color-amber-50: 43 100% 96%;
+    --color-amber-100: 43 100% 88%;
+    --color-amber-200: 43 100% 76%;
+    --color-amber-300: 43 100% 65%;
+    --color-amber-400: 43 100% 56%;
+    --color-amber-500: 43 100% 45%;
+    --color-amber-600: 43 100% 35%;
+    --color-amber-700: 43 100% 25%;
+    --color-amber-800: 43 100% 16%;
+    --color-amber-900: 43 100% 8%;
+
+    --color-ember-50: 27 88% 96%;
+    --color-ember-100: 27 88% 88%;
+    --color-ember-200: 27 88% 76%;
+    --color-ember-300: 27 88% 65%;
+    --color-ember-400: 27 88% 53%;
+    --color-ember-500: 27 88% 42%;
+    --color-ember-600: 27 88% 33%;
+    --color-ember-700: 27 88% 24%;
+    --color-ember-800: 27 88% 15%;
+    --color-ember-900: 27 88% 8%;
+
+    --color-crimson-50: 344 78% 96%;
+    --color-crimson-100: 344 78% 88%;
+    --color-crimson-200: 344 78% 76%;
+    --color-crimson-300: 344 78% 65%;
+    --color-crimson-400: 344 78% 52%;
+    --color-crimson-500: 344 78% 42%;
+    --color-crimson-600: 344 78% 33%;
+    --color-crimson-700: 344 78% 24%;
+    --color-crimson-800: 344 78% 15%;
+    --color-crimson-900: 344 78% 8%;
+
+    --color-cinema-50: 220 20% 97%;
+    --color-cinema-100: 220 18% 90%;
+    --color-cinema-200: 220 16% 75%;
+    --color-cinema-300: 220 14% 55%;
+    --color-cinema-400: 220 13% 38%;
+    --color-cinema-500: 220 14% 25%;
+    --color-cinema-600: 220 16% 16%;
+    --color-cinema-700: 220 18% 11%;
+    --color-cinema-800: 220 20% 7%;
+    --color-cinema-900: 220 22% 4%;
+
+    --background: var(--color-cinema-900);
+    --foreground: var(--color-cinema-50);
+    --surface: var(--color-cinema-800);
+    --surface-raised: var(--color-cinema-700);
+
+    --primary: var(--color-teal-400);
+    --primary-hover: var(--color-teal-300);
+    --primary-fg: var(--color-cinema-900);
+
+    --secondary: var(--color-champagne-200);
+    --secondary-hover: var(--color-champagne-300);
+    --secondary-fg: var(--color-cinema-900);
+
+    --accent: var(--color-amber-300);
+    --accent-fg: var(--color-cinema-900);
+
+    --warning: var(--color-ember-300);
+    --warning-fg: var(--color-cinema-900);
+
+    --danger: var(--color-crimson-300);
+    --danger-fg: var(--color-cinema-900);
+
+    --favorite: var(--color-crimson-400);
+    --rating: var(--color-amber-400);
+
+    --border: var(--color-cinema-700);
+    --muted: var(--color-cinema-600);
+    --muted-fg: var(--color-cinema-400);
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Inter", system-ui, sans-serif;
+    @apply text-base leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+
+  a {
+    color: hsl(var(--primary));
+    @apply transition-colors duration-200 hover:underline;
+  }
+}
+
+@layer components {
+  .movie-card {
+    @apply relative overflow-hidden rounded-xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl;
+    background-color: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .rating-badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold;
+    background-color: hsl(var(--rating) / 0.15);
+    color: hsl(var(--rating));
+  }
+
+  .favorite-btn {
+    @apply transition-colors duration-200;
+    color: hsl(var(--muted));
+  }
+  .favorite-btn.active,
+  .favorite-btn:hover {
+    color: hsl(var(--favorite));
+  }
+
+  .genre-chip {
+    @apply rounded-full px-3 py-1 text-xs font-medium;
+    background-color: hsl(var(--primary) / 0.12);
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.25);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(to bottom, transparent 40%, hsl(var(--background)) 100%);
+  }
+}
