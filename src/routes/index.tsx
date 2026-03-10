@@ -1,9 +1,10 @@
+import { Layout } from "@/components/shared/layout";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <></>,
+    element: <Layout />,
     children: [
       {
         index: true,
