@@ -1,0 +1,24 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Planeta / rolo de filme -->
+  <circle cx="16" cy="16" r="7" fill="#029daf"/>
+
+  <!-- Furos do rolo -->
+  <circle cx="16" cy="16" r="2.2" fill="#0d0f11"/>
+  <circle cx="16" cy="11" r="1.2" fill="#0d0f11"/>
+  <circle cx="16" cy="21" r="1.2" fill="#0d0f11"/>
+  <circle cx="11" cy="16" r="1.2" fill="#0d0f11"/>
+  <circle cx="21" cy="16" r="1.2" fill="#0d0f11"/>
+
+  <!-- Órbita elíptica -->
+  <ellipse
+    cx="16" cy="16"
+    rx="14" ry="5.5"
+    stroke="#ffc219"
+    stroke-width="1.5"
+    fill="none"
+    transform="rotate(-30 16 16)"
+  />
+
+  <!-- Satélite na órbita -->
+  <circle cx="26.5" cy="10.5" r="2" fill="#ffc219"/>
+</svg>
