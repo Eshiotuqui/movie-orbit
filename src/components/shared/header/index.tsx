@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MovieOrbitIcon } from "../icons";
+import { useFiltersContext } from "@/features/movies/hooks/use-filter-context";
 
 export function Header() {
+  const { search, setSearch } = useFiltersContext();
+
   return (
     <header className="border-border bg-surface sticky top-0 z-50 w-full border-b">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-6">
@@ -20,6 +23,8 @@ export function Header() {
               className="text-muted-foreground pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
             />
             <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar filmes..."
               className="bg-surface-raised border-border text-foreground placeholder:text-muted-foreground h-9 w-full pl-8 text-[13px]"
             />

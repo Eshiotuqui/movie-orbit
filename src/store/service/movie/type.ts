@@ -4,11 +4,11 @@ export interface Movie {
   overview: string;
   poster_path: string | null;
   backdrop_path: string | null;
-  release_date: string;
   vote_average: number;
   vote_count: number;
-  popularity: number;
+  release_date: string;
   genre_ids: number[];
+  popularity: number;
   adult: boolean;
   original_language: string;
   original_title: string;
@@ -16,8 +16,8 @@ export interface Movie {
 }
 
 export interface GetPopularMoviesParams {
-  language?: string;
   page?: number;
+  language?: string;
   region?: string;
 }
 
@@ -31,15 +31,14 @@ export interface GetPopularMoviesResponse {
 export interface GetMovieByIdParams {
   id: number;
   language?: string;
+  append_to_response?: string;
 }
 
 export interface SearchMoviesParams {
   query: string;
-  language?: string;
   page?: number;
+  language?: string;
   include_adult?: boolean;
-  region?: string;
-  year?: number;
 }
 
 export interface SearchMoviesResponse {

@@ -40,4 +40,5 @@ export const MovieService = createApi({
   }),
 });
 
-export const { useGetPopularMoviesQuery, useGetMovieByIdQuery } = MovieService;
+export const { useGetPopularMoviesQuery, useGetMovieByIdQuery, useSearchMoviesQuery } =
+  MovieService;

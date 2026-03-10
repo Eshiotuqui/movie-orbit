@@ -1,4 +1,5 @@
 import { Layout } from "@/components/shared/layout";
+import { Home } from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -8,7 +9,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <></>,
+        element: <Home />,
       },
     ],
   },
