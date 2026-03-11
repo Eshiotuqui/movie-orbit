@@ -213,9 +213,9 @@ movieOrbit/
 ---
 
 <div align="center">
-  <p>Feito com ❤️ e ☕ por <strong>seu-usuario</strong></p>
+  <p>Feito com ❤️ e ☕ por <strong>Enzo Shiotuqui</strong></p>
   <p>
-    <a href="https://github.com/seu-usuario">GitHub</a> •
-    <a href="https://linkedin.com/in/seu-usuario">LinkedIn</a>
+    <a href="https://github.com/Eshiotuqui">GitHub</a> •
+    <a href="https://www.linkedin.com/in/enzo-shiotuqui-385324266/">LinkedIn</a>
   </p>
 </div>
