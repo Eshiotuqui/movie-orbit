@@ -39,7 +39,7 @@ export function Favorites() {
 
   return (
     <section className="flex flex-col gap-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
           <h2 className="text-2xl font-bold text-foreground">Meus Filmes Favoritos</h2>
           {totalResults > 0 && (
@@ -51,7 +51,7 @@ export function Favorites() {
 
         {!isEmpty && (
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Ordenar por:</span>
+            <span className="hidden text-sm text-muted-foreground sm:inline">Ordenar por:</span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
