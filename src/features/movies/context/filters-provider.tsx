@@ -4,6 +4,7 @@ import { FiltersContext } from "./filters-contex";
 export function FiltersProvider({ children }: { children: React.ReactNode }) {
   const [page, setPageState] = useState(1);
   const [search, setSearchState] = useState("");
+  const [genreId, setGenreIdState] = useState<number | null>(null);
 
   const debouncedSearch = useDeferredValue(search);
 
@@ -17,8 +18,15 @@ export function FiltersProvider({ children }: { children: React.ReactNode }) {
     setPageState(1);
   }, []);
 
+  const setGenreId = useCallback((id: number | null) => {
+    setGenreIdState(id);
+    setPageState(1);
+  }, []);
+
   return (
-    <FiltersContext.Provider value={{ page, search, debouncedSearch, setPage, setSearch }}>
+    <FiltersContext.Provider
+      value={{ page, search, debouncedSearch, genreId, setPage, setSearch, setGenreId }}
+    >
       {children}
     </FiltersContext.Provider>
   );

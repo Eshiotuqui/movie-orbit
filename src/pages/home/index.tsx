@@ -5,22 +5,25 @@ import { MovieGridSkeleton } from "@/features/movies/components/movie-card-skele
 import { useHome } from "@/features/movies/hooks/use-home";
 
 export function Home() {
-  const { movies, page, totalPages, isLoading, isError, setPage, isFavorite, toggle } = useHome();
+  const { movies, genresMap, page, totalPages, isLoading, isError, setPage, isFavorite, toggle } =
+    useHome();
 
   return (
     <section className="flex flex-col gap-8">
-      <h2 className="text-foreground text-2xl font-bold">Filmes Populares</h2>
+      <h2 className="text-2xl font-bold text-foreground">Filmes Populares</h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {isLoading && <MovieGridSkeleton count={20} />}
-        {isError && <MovieEmpty />}
+        {!isLoading && isError && <MovieEmpty />}
         {!isLoading && !isError && movies.length === 0 && <MovieEmpty />}
         {!isLoading &&
           !isError &&
+          movies.length > 0 &&
           movies.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
+              genresMap={genresMap}
               isFavorite={isFavorite(movie.id)}
               onToggleFavorite={toggle}
             />
