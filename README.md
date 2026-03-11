@@ -171,7 +171,8 @@ Preencha com sua chave da API do TMDB:
 
 ```env
 VITE_TMDB_API_KEY=sua_chave_aqui
-VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
+VITE_TMDB_SESSION_ID=sua_chave_aqui
+VITE_TMDB_ACCOUNT_ID=sua_chave_aqui
 ```
 
 ### 4. Execute o projeto em modo de desenvolvimento
