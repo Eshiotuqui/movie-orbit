@@ -177,11 +177,6 @@ pnpm test
 pnpm test --watch
 ```
 
-### Gerar relatório de cobertura
-
-```bash
-pnpm test:coverage
-```
 
 ---
 
