@@ -37,6 +37,36 @@ O **MovieOrbit** é uma aplicação web moderna desenvolvida em React que consom
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home — Filmes Populares
+> Navegue pelo catálogo de filmes populares, filtre por gênero e adicione aos favoritos diretamente pelo card.
+
+![Home](./docs/screenshots/home.png)
+
+---
+
+### 🎬 Detalhes do Filme
+> Veja sinopse, nota TMDB, data de lançamento, elenco principal, direção, produção e estúdios envolvidos.
+
+![Detalhes](./docs/screenshots/details.png)
+
+---
+
+### ❤️ Meus Favoritos
+> Lista personalizada com todos os filmes favoritados, com suporte a ordenação por título.
+
+![Favoritos](./docs/screenshots/favorites.png)
+
+---
+
+### ✅ Cobertura de Testes
+> **6 suites** e **45 testes** passando com sucesso em **9.6s**.
+
+![Testes](./docs/screenshots/tests.png)
+
+---
+
 ## 🛠 Tecnologias Utilizadas
 
 ### ⚛️ React
@@ -134,9 +164,8 @@ cp .env.example .env
 Preencha com sua chave da API do TMDB:
 
 ```env
-VITE_TMDB_API_KEY="chave"
-VITE_TMDB_SESSION_ID="chave"
-VITE_TMDB_ACCOUNT_ID="chave"
+VITE_TMDB_API_KEY=sua_chave_aqui
+VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
 ```
 
 ### 4. Execute o projeto em modo de desenvolvimento
@@ -177,6 +206,11 @@ pnpm test
 pnpm test --watch
 ```
 
+### Gerar relatório de cobertura
+
+```bash
+pnpm test:coverage
+```
 
 ---
 
