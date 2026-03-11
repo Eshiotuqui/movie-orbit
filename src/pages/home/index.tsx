@@ -3,14 +3,26 @@ import { MovieCard } from "@/features/movies/components/movie-card";
 import { MovieEmpty } from "@/features/movies/components/movie-empty";
 import { MovieGridSkeleton } from "@/features/movies/components/movie-card-skeleton";
 import { useHome } from "@/features/movies/hooks/use-home";
+import { useFiltersContext } from "@/features/movies/hooks/use-filter-context";
 
 export function Home() {
   const { movies, genresMap, page, totalPages, isLoading, isError, setPage, isFavorite, toggle } =
     useHome();
 
+  const { genreId } = useFiltersContext();
+  const activeGenreName = genreId ? genresMap[genreId] : null;
+
   return (
     <section className="flex flex-col gap-8">
-      <h2 className="text-2xl font-bold text-foreground">Filmes Populares</h2>
+      <h2 className="text-2xl font-bold text-foreground">
+        {activeGenreName ? (
+          <>
+            Resultados para: <span className="text-primary">{activeGenreName}</span>
+          </>
+        ) : (
+          "Filmes Populares"
+        )}
+      </h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {isLoading && <MovieGridSkeleton count={20} />}
