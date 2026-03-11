@@ -2,10 +2,8 @@ import { Heart } from "lucide-react";
 import { AppPagination } from "@/components/shared/pagination";
 import { MovieCard } from "@/features/movies/components/movie-card";
 import { MovieGridSkeleton } from "@/features/movies/components/movie-card-skeleton";
-import {
-  useFavoritesPage,
-  type FavoritesSortOption,
-} from "@/features/movies/hooks/use-favorites-page";
+import { useFavoritesPage } from "@/features/movies/hooks/use-favorites-page";
+import type { FavoritesSortOption } from "@/features/movies/utils/sort-movies";
 import {
   DropdownMenu,
   DropdownMenuContent,

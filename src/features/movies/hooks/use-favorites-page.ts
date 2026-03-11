@@ -1,12 +1,13 @@
 import { useGetFavoritesQuery, useToggleFavoriteMutation } from "@/store/service/favorite";
 import { useGetGenresQuery } from "@/store/service/movie";
 import type { Movie } from "@/store/service/movie/type";
+import { sortMovies } from "@/features/movies/utils/sort-movies";
 import { useState, useMemo, useCallback } from "react";
+
+import type { FavoritesSortOption } from "@/features/movies/utils/sort-movies";
 
 const ACCOUNT_ID = Number(import.meta.env.VITE_TMDB_ACCOUNT_ID);
 const SESSION_ID = import.meta.env.VITE_TMDB_SESSION_ID as string;
-
-export type FavoritesSortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
 
 export function useFavoritesPage() {
   const [page, setPage] = useState(1);
@@ -28,19 +29,10 @@ export function useFavoritesPage() {
     [genresData],
   );
 
-  const sorted = useMemo(() => {
-    const movies = [...(data?.results ?? [])];
-    switch (sortBy) {
-      case "title_asc":
-        return movies.sort((a, b) => a.title.localeCompare(b.title, "pt-BR"));
-      case "title_desc":
-        return movies.sort((a, b) => b.title.localeCompare(a.title, "pt-BR"));
-      case "rating_desc":
-        return movies.sort((a, b) => b.vote_average - a.vote_average);
-      case "rating_asc":
-        return movies.sort((a, b) => a.vote_average - b.vote_average);
-    }
-  }, [data, sortBy]);
+  const sorted = useMemo(
+    () => sortMovies(data?.results ?? [], sortBy),
+    [data, sortBy],
+  );
 
   const removeFavorite = useCallback(
     (movie: Movie) => {
