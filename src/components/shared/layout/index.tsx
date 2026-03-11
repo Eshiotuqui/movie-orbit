@@ -1,15 +1,17 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../header";
+import { Footer } from "../footer";
 import { FiltersProvider } from "@/features/movies/context/filters-provider";
 
 export function Layout() {
   return (
     <FiltersProvider>
-      <div className="bg-background min-h-screen">
+      <div className="flex min-h-screen flex-col bg-background">
         <Header />
-        <main className="mx-auto max-w-7xl px-6 py-8">
+        <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-8">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </FiltersProvider>
   );

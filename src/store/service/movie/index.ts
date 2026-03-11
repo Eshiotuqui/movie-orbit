@@ -5,6 +5,8 @@ import type {
   GetMovieByIdParams,
   SearchMoviesParams,
   SearchMoviesResponse,
+  GetGenresResponse,
+  MovieCredits,
 } from "./type";
 import type { Movie } from "./type";
 import { tmdbBaseQuery } from "@/store/config/base-query";
@@ -12,7 +14,7 @@ import { tmdbBaseQuery } from "@/store/config/base-query";
 export const MovieService = createApi({
   reducerPath: "movie-service",
   baseQuery: tmdbBaseQuery,
-  tagTypes: ["Movies"],
+  tagTypes: ["Movies", "Genres"],
   endpoints: (builder) => ({
     getPopularMovies: builder.query<GetPopularMoviesResponse, GetPopularMoviesParams | void>({
       query: (params) => ({
@@ -37,8 +39,29 @@ export const MovieService = createApi({
       }),
       providesTags: ["Movies"],
     }),
+
+    getMovieCredits: builder.query<MovieCredits, { id: number; language?: string }>({
+      query: ({ id, ...params }) => ({
+        url: `movie/${id}/credits`,
+        params: { ...params },
+      }),
+      providesTags: (_result, _error, { id }) => [{ type: "Movies", id }],
+    }),
+
+    getGenres: builder.query<GetGenresResponse, { language?: string }>({
+      query: (params) => ({
+        url: "genre/movie/list",
+        params: { ...params },
+      }),
+      providesTags: ["Genres"],
+    }),
   }),
 });
 
-export const { useGetPopularMoviesQuery, useGetMovieByIdQuery, useSearchMoviesQuery } =
-  MovieService;
+export const {
+  useGetPopularMoviesQuery,
+  useGetMovieByIdQuery,
+  useSearchMoviesQuery,
+  useGetGenresQuery,
+  useGetMovieCreditsQuery,
+} = MovieService;

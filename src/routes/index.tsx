@@ -1,5 +1,6 @@
 import { Layout } from "@/components/shared/layout";
 import { Home } from "@/pages/home";
+import { MovieDetail } from "@/pages/movie-detail";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -11,6 +12,7 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      { path: "movie/:id", element: <MovieDetail /> },
     ],
   },
 ]);
