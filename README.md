@@ -12,6 +12,12 @@
   <h1>🪐 MovieOrbit</h1>
   <p><strong>Explore. Favorite. Descubra.</strong></p>
   <p>Aplicação React desenvolvida como processo seletivo, que permite aos usuários explorar filmes, criar listas personalizadas de favoritos e descobrir novos conteúdos através da API do <a href="https://www.themoviedb.org/">The Movie Database (TMDB)</a>.</p>
+
+  <br />
+
+  <a href="https://movie-orbit-silk.vercel.app/">
+    <img src="https://img.shields.io/badge/🚀 Acessar Deploy-movie--orbit--silk.vercel.app-black?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
 </div>
 
 ---
