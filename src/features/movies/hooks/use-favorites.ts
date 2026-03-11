@@ -1,22 +1,38 @@
+import { useGetFavoritesQuery, useToggleFavoriteMutation } from "@/store/service/favorite";
 import type { Movie } from "@/store/service/movie/type";
-import { useState, useCallback } from "react";
+import { useMemo, useCallback } from "react";
+
+const ACCOUNT_ID = Number(import.meta.env.VITE_TMDB_ACCOUNT_ID);
+const SESSION_ID = import.meta.env.VITE_TMDB_SESSION_ID as string;
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState<Set<number>>(new Set());
+  const { data } = useGetFavoritesQuery({
+    accountId: ACCOUNT_ID,
+    sessionId: SESSION_ID,
+    language: "pt-BR",
+  });
 
-  const toggle = useCallback((movie: Movie) => {
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(movie.id)) {
-        next.delete(movie.id);
-      } else {
-        next.add(movie.id);
-      }
-      return next;
-    });
-  }, []);
+  const [toggleFavoriteMutation] = useToggleFavoriteMutation();
 
-  const isFavorite = useCallback((id: number) => favorites.has(id), [favorites]);
+  const favoriteIds = useMemo(
+    () => new Set(data?.results.map((m) => m.id) ?? []),
+    [data],
+  );
 
-  return { favorites, toggle, isFavorite };
+  const isFavorite = useCallback((id: number) => favoriteIds.has(id), [favoriteIds]);
+
+  const toggle = useCallback(
+    (movie: Movie) => {
+      toggleFavoriteMutation({
+        accountId: ACCOUNT_ID,
+        sessionId: SESSION_ID,
+        media_type: "movie",
+        media_id: movie.id,
+        favorite: !favoriteIds.has(movie.id),
+      });
+    },
+    [toggleFavoriteMutation, favoriteIds],
+  );
+
+  return { favorites: data?.results ?? [], isFavorite, toggle };
 }
